@@ -225,7 +225,9 @@ HAVING MAX(base_salary) > 120000;
 
 
 -- Q056. INNER JOIN Employees and Departments to show employee full name and department name. 
-
+select concat(e.first_name, ' ', e.last_name) as full_name, d.department_name 
+from employees e
+INNER join Departments d ON e.department_id = d.department_id;
 
 -- Q057. Show employee name, designation and department location using a two-table join. 
 
