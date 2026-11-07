@@ -79,21 +79,60 @@ A 5-day training program covering Python, data analysis, SQL, REST APIs and ETL.
 ---
 
 **FastAPI projects (Day 4)**
-1. Create the database using the SQL files.
-2. Add a `.env` file in the project folder:
-   ```env
-   DB_HOST=localhost
-   DB_PORT=3306
-   DB_USERNAME=your_user
-   DB_PASSWORD=your_password
-   DB_DATABASE=your_database
-   ```
-3. Install and start:
-   ```bash
-   pip install -r requirements.txt
-   uvicorn main:app --reload
-   ```
-4. Open `http://127.0.0.1:8000/docs` to test the APIs.
+------------FastAPI------------
+step 1:
+----------
+mkdir CoforgeCustomerDB
+cd CoforgeCustomerDB
+code .
+
+step 2:
+----------
+python -m venv venv
+venv\Scripts\activate
+
+step 3:
+----------
+pip install fastapi uvicorn python-dotenv pydantic sqlalchemy pymysql pydantic-settings email-validator
+
+step 4:
+----------
+pip freeze > requirements.txt
+
+step 4.1:
+----------
+Login to MySQL ---->
+Create Database CoforgeCustomerDB
+use CoforgeCustomerDB
+
+step 4.2:
+------------
+
+
+step 5:
+----------
+type nul > database.py
+
+step 6:
+----------
+type nul > customer_models.py
+
+step 7:
+----------
+type nul > customer_schemas.py
+
+step 8:
+----------
+type nul > customer_services.py
+
+step 9:
+----------
+type nul > main.py
+
+step 10:
+----------
+uvicorn main:app --reload
+
 
 **ETL pipeline (Day 5)**
 ```bash
