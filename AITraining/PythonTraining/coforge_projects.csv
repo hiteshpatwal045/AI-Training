@@ -1,0 +1,9 @@
+ProjectID,ProjectName,BusinessDomain,ProjectBudgetINR,ProjectStatus
+PRJ101,Banking Modernization,Banking,18000000,Active
+PRJ102,Insurance Analytics,Insurance,12000000,Active
+PRJ103,Retail Data Platform,Retail,9500000,Completed
+PRJ104,Cloud Migration,Technology,22000000,Active
+PRJ105,GenAI Support Assistant,Technology,16000000,Planning
+PRJ106,HR Digital Portal,Internal,5500000,Completed
+PRJ107,Finance Automation,Internal,8000000,Active
+PRJ108,Customer Insights,Retail,14000000,Active
