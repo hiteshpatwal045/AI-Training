@@ -1,0 +1,60 @@
+2026-11-06 13:08:02,017 CoforgeCustomerAPI | INFO | Home API Called
+2026-11-06 13:08:10,853 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:08:10,861 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 13:08:12,270 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:08:12,273 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 13:08:38,992 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:08:48,183 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:08:48,257 CoforgeCustomerAPI | INFO | Successfully Retrieved By customers ID
+2026-11-06 13:09:11,037 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:09:11,097 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 2
+2026-11-06 13:13:56,740 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:27:17,893 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:27:17,907 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 3
+2026-11-06 13:27:30,696 CoforgeCustomerAPI | INFO | deleteEmployee api Called
+2026-11-06 13:30:03,873 CoforgeCustomerAPI | INFO | deleteEmployee api Called
+2026-11-06 13:32:58,766 CoforgeCustomerAPI | INFO | deleteEmployee api Called
+2026-11-06 13:35:19,818 CoforgeCustomerAPI | INFO | deleteEmployee api Called
+2026-11-06 13:35:28,153 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:35:28,265 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 2
+2026-11-06 13:38:32,741 CoforgeCustomerAPI | INFO | deleteEmployee api Called
+2026-11-06 13:42:01,152 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:42:01,195 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 13:42:41,332 CoforgeCustomerAPI | INFO | CreateEmployees API Called
+2026-11-06 13:42:52,654 CoforgeCustomerAPI | INFO | GetAllEmployees API Called
+2026-11-06 13:42:52,776 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 2
+2026-11-06 13:43:04,803 CoforgeCustomerAPI | INFO | deleteEmployee api Called
+2026-11-06 13:52:39,466 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 13:52:39,478 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 13:53:27,449 CoforgeCustomerAPI | INFO | Create Employee Endpoint Called
+2026-11-06 13:53:38,879 CoforgeCustomerAPI | INFO | Create Employee Endpoint Called
+2026-11-06 13:53:45,935 CoforgeCustomerAPI | INFO | Create Employee Endpoint Called
+2026-11-06 13:53:59,143 CoforgeCustomerAPI | INFO | Create Employee Endpoint Called
+2026-11-06 13:54:08,083 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 13:54:08,086 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 3
+2026-11-06 13:54:32,060 CoforgeCustomerAPI | INFO | Delete Endpoint Called
+2026-11-06 13:54:32,077 CoforgeCustomerAPI | INFO | Emp with id : {8} Deleted
+2026-11-06 13:54:39,928 CoforgeCustomerAPI | INFO | Delete Endpoint Called
+2026-11-06 13:54:39,941 CoforgeCustomerAPI | INFO | Emp with id : {5} Deleted
+2026-11-06 13:54:40,153 CoforgeCustomerAPI | INFO | Delete Endpoint Called
+2026-11-06 13:54:40,158 CoforgeCustomerAPI | INFO | Emp with id : {5} Already Deleted/ Not Exist
+2026-11-06 13:54:48,907 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 13:54:48,912 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 15:04:29,904 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 15:04:29,914 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 15:33:04,381 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 15:33:04,393 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 15:33:14,518 CoforgeCustomerAPI | INFO | Delete Endpoint Called
+2026-11-06 15:33:14,539 CoforgeCustomerAPI | INFO | Emp with id : {1} Deleted
+2026-11-06 15:33:21,964 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 15:33:21,969 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 0
+2026-11-06 15:33:34,772 CoforgeCustomerAPI | INFO | Create Employee Endpoint Called
+2026-11-06 15:41:20,429 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 15:41:20,451 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 15:41:35,871 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 15:41:35,874 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 22:44:48,657 CoforgeCustomerAPI | INFO | Get All Employee Endpoint Called
+2026-11-06 22:44:48,684 CoforgeCustomerAPI | INFO | Successfully Retrieved %s customers 1
+2026-11-06 22:45:19,584 CoforgeCustomerAPI | INFO | Get EmployeeId  Endpoint Called
+2026-11-06 22:47:57,824 CoforgeCustomerAPI | INFO | Delete Endpoint Called
+2026-11-06 22:47:57,994 CoforgeCustomerAPI | INFO | Emp with id : {9} Deleted
