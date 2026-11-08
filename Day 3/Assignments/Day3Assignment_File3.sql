@@ -43,14 +43,6 @@ SELECT project_name, project_status, budget FROM Projects;
 -- Q015. List payroll records with calculated net_pay. 
 SELECT payroll_id, employee_id, pay_month, net_pay FROM Payroll;
 
-
-
-
-
-
-
-
-
 -- Q016. Find employees with base_salary greater than 90000. 
 SELECT * FROM Employees 
 WHERE base_salary > 90000;
@@ -129,11 +121,6 @@ SELECT * FROM Employees
 WHERE employment_status = 'Active' 
 ORDER BY department_id ASC, base_salary DESC;
 
-
-
-
-
-
 -- Q040. Count employees in each department_id. 
 SELECT department_id, COUNT(*) AS employee_count 
 FROM Employees 
@@ -171,7 +158,6 @@ SELECT designation, COUNT(*) AS employee_count
 FROM Employees 
 GROUP BY designation 
 HAVING COUNT(*) >= 3;
-
 
 -- Q047. Calculate total net payroll for each pay_month. 
 SELECT pay_month, SUM(net_pay) AS total_net_payroll 
@@ -221,42 +207,66 @@ FROM Employees
 GROUP BY department_id 
 HAVING MAX(base_salary) > 120000;
 
-
-
-
 -- Q056. INNER JOIN Employees and Departments to show employee full name and department name. 
 select concat(e.first_name, ' ', e.last_name) as full_name, d.department_name 
 from employees e
 INNER join Departments d ON e.department_id = d.department_id;
 
 -- Q057. Show employee name, designation and department location using a two-table join. 
-
+select concat(e.first_name, ' ', e.last_name) as employee_name, e.designation, d.location
+from employees e
+INNER JOIN departments d on e.department_id = d.department_id;
 
 -- Q058. List all employees in the Technology department using a join. 
-
+select e.* 
+from employees e 
+Inner join departments d ON e.department_id = d.department_id
+where d.department_name = 'Technology';
 
 -- Q059. Show employee name, department name and base salary, ordered by salary. 
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS employee_name, d.department_name, e.base_salary
+from employees e
+Inner Join Departments d on e.department_id = d.department_id
+order by e.base_salary desc;
 
 -- Q060. Count employees per department using Employees JOIN Departments. 
-
+select d.department_name, count(e.employee_id) as employee_count
+from departments d
+left join employees e on d.department_id = e.department_id
+group by d.department_name;
 
 -- Q061. Show department name and average employee salary using JOIN and GROUP BY. 
-
+SELECT d.department_name, AVG(e.base_salary) AS average_salary 
+FROM Departments d
+INNER JOIN Employees e ON d.department_id = e.department_id
+GROUP BY d.department_name;
 
 -- Q062. Find department names with at least five employees using JOIN, GROUP BY and HAVING. 
-
+select d.department_name, count(e.employee_id) as employee_count
+from departments d
+inner join employees e on d.department_id = e.department_id
+group by d.department_name
+having count(e.employee_id) >= 5;
 
 -- Q063. JOIN Employees and Payroll to show employee name, pay_month and net_pay. 
-
+select concat(e.first_name, ' ', e.last_name) as emp_name, p.pay_month, p.net_pay
+from Employees e
+inner join payroll p on e.employee_id = p.employee_id;
 
 -- Q064. Find employees whose October 2026 payroll is Pending using two tables. 
-
+select concat(e.first_name, ' ', e.last_name) as emp_name
+from employees e
+inner join payroll p on e.employee_id = p.employee_id
+where p.pay_month = '2026-10-01' and  p.payment_status = 'Pending';
 
 -- Q065. Show employee names and bonuses for September 2026. 
-
+select concat(e.first_name, ' ', e.last_name) as emp_name, p.bonus
+from employees e
+inner join payroll p on e.employee_id = p.employee_id
+where p.pay_month = '2026-09-01';
 
 -- Q066. Find total net_pay for each employee across three months using Employees and Payroll. 
+
 
 
 -- Q067. Show the five employees with the highest total net_pay across all months. 
