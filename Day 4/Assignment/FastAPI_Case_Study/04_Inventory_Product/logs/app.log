@@ -1,0 +1,5 @@
+2026-11-12 01:50:19,461 | INFO | logger | Product added successfully with ID: 1
+2026-11-12 01:50:29,663 | INFO | logger | Fetched 1 products (page 1)
+2026-11-12 01:51:25,087 | INFO | logger | Successfully Updated the Product with ID: 1
+2026-11-12 01:51:48,012 | INFO | logger | Fetched 1 products (page 1)
+2026-11-12 01:52:07,980 | WARNING | logger | Duplicate product ID while adding a product
