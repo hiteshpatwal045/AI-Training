@@ -134,6 +134,11 @@ print("===============================19===============================")
 # 20. Calculate Pearson correlation between income and account balance. 
 print("===============================20===============================")
 
+
+
+
+
+
 # 21. Read the supplied CSV using pd.read_csv. 
 print("===============================21===============================")
 df = pd.read_csv("HSBC_Synthetic_Banking_Customers.csv")

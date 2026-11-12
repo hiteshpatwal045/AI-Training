@@ -129,11 +129,7 @@ print(employees[["PerformanceRating", "PerformanceCategory"]])
 
 print("===============================24===============================")
 # 24. Calculate salary per year of experience; handle zero experience safely.
-employees["SalaryPerYear"] = np.where(
-    employees["ExperienceYears"] == 0,
-    0,
-    employees["Salary"] / employees["ExperienceYears"]
-)
+employees["SalaryPerYear"] = np.where(employees["ExperienceYears"] == 0,0,employees["Salary"] / employees["ExperienceYears"])
 print(employees[["Salary","SalaryPerYear"]])
 
 print("===============================25===============================")
@@ -165,7 +161,7 @@ print(grouped["EmployeeID"].count())
 print("===============================31===============================")
 # 31. Use agg() to find count, min, max, mean and median salary by department.
 print(employees.groupby("Department")["Salary"]
-      .agg(["count","min","max","mean","median"]
+    .agg(["count","min","max","mean","median"]
 ))
 
 print("===============================32===============================")
@@ -213,6 +209,7 @@ print("===============================39===============================")
 employees["SalaryRank"] = employees.groupby("Department")["Salary"].rank(ascending=False)
 print(employees[["EmployeeName", "Department","Salary", "SalaryRank"]])
 
+
 print("===============================40===============================")
 # 40. Find the top three highest-paid employees per department.
 print(
@@ -229,6 +226,8 @@ print(employees["SalaryDiff"])
 
 print("===============================42===============================")
 # 42. Calculate the 25th, 50th, 75th and 90th Salary percentiles.
+salary_percentiles = employees["Salary"].quantile([0.25, 0.50, 0.75, 0.90])
+print(salary_percentiles)
 
 print("===============================43===============================")
 # 43. Detect Salary outliers using the interquartile range (IQR) method.

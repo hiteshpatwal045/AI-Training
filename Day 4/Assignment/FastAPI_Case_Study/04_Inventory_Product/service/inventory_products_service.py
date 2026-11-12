@@ -23,13 +23,13 @@ def add_product(db : Session, data : AddProduct):
 
     return product
 
-  except IntegrityError as e:
+  except IntegrityError:
     db.rollback()
     logger.warning("Duplicate product ID while adding a product")
     raise HTTPException(
       status_code=409,
       detail="Product ID already exists"
-    ) from e
+    )
 
   except SQLAlchemyError as e:
     db.rollback()
