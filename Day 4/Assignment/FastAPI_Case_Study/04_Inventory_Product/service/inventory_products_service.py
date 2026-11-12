@@ -41,27 +41,8 @@ def add_product(db : Session, data : AddProduct):
 
 
 # 2. List all products with pagination.
-def list_products(db : Session, page : int, page_size : int):
-  try:
-    total = db.query(InventoryProductDB).count()
-    items = (
-      db.query(InventoryProductDB)
-        .order_by(InventoryProductDB.product_id)
-        .offset((page - 1) * page_size)
-        .limit(page_size)
-        .all()
-    )
-
-  except SQLAlchemyError as e:
-    logger.exception("DB error while listing products")
-    raise HTTPException(
-      status_code=500,
-      detail="Internal server error"
-    ) from e
-
-  logger.info(f"Fetched {len(items)} products (page {page})")
-  return {"items": items, "total": total, "page": page, "page_size": page_size}
-
+def list_accounts(db: Session):
+  return db.query(InventoryProductDB).all()
 
 # 3. Retrieve a product by ID.
 def get_product_by_id(db : Session, id : int):
