@@ -1,0 +1,9 @@
+Product_ID,Product_Name,Category,Standard_MRP_INR,Standard_Cost_INR,Pack_Size_g
+P01,Dairy Milk Classic,Chocolate,20,13,40
+P02,Dairy Milk Silk,Chocolate,80,53,70
+P03,Dairy Milk Fruit & Nut,Chocolate,50,33,55
+P04,Dairy Milk Crackle,Chocolate,45,29,45
+P05,Dairy Milk Oreo,Chocolate,45,30,50
+P06,Dairy Milk Bubbly,Chocolate,90,60,80
+P07,Dairy Milk Roast Almond,Chocolate,100,67,80
+P08,Dairy Milk Mini,Chocolate,10,6,13
