@@ -19,7 +19,7 @@ app = FastAPI(title="Inventory and Product Management API")
 
 # 1. Add a product
 @app.post("/products", response_model=InventoryProduct)
-def add_product(data : AddProduct, db : Session = Depends(get_db)):
+def add_product(data : AddProduct, db : Session):
   return service.add_product(db, data)
 
 
@@ -35,17 +35,17 @@ def list_products(
 
 # 3. Retrieve a product by ID
 @app.get("/products/{id}", response_model=InventoryProduct)
-def get_product(id : int, db : Session = Depends(get_db)):
+def get_product(id : int, db : Session):
   return service.get_product_by_id(db, id)
 
 
 # 4. Update product information and pricing
 @app.put("/products/{id}", response_model=InventoryProduct)
-def update_product(id : int, data : UpdateProduct, db : Session = Depends(get_db)):
+def update_product(id : int, data : UpdateProduct, db : Session):
   return service.update_product(db, id, data)
 
 
 # 5. Delete a product
 @app.delete("/products/{id}")
-def delete_product(id : int, db : Session = Depends(get_db)):
+def delete_product(id : int, db : Session):
   return service.delete_product(db, id)
