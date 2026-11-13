@@ -79,3 +79,32 @@ df["AttendancePercentage"] = (df["PresentDays"] / df["WorkingDays"] * 100).round
 
 print("\nRows with salary above 75,000:", len(df[df["GrossSalary"] > 75000]))
 print(df[df["GrossSalary"] > 75000].head())
+
+
+# 10. Sort by salary (highest first)
+df = df.sort_values(by="GrossSalary", ascending=False)
+print("\nSorted by salary (top 5):")
+print(df[["EmployeeID", "EmployeeName", "GrossSalary"]].head())
+
+
+# 15. Group by department
+print("\nEmployee rows per department:")
+print(df.groupby("Department").size())
+
+
+# 16. Department-wise average salary
+print("\nDepartment-wise average gross salary:")
+print(df.groupby("Department")["GrossSalary"].mean().round(2))
+
+
+# 17. Top 10 highest-paid employees
+#     (an employee appears in many months, so use average pay)
+# ---------------------------------------------------------------
+print("\nTop 10 highest-paid employees:")
+print(
+    df.groupby(["EmployeeID", "EmployeeName"], as_index=False)["GrossSalary"]
+    .mean()
+    .round(2)
+    .sort_values(by="GrossSalary", ascending=False)
+    .head(10)
+)
