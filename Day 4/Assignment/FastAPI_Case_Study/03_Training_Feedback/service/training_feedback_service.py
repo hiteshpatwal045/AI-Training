@@ -42,24 +42,9 @@ def create_feedback(db: Session, data: CreateFeedback):
     )
 
 
-# 2. List feedback records with pagination.
-def get_all_feedback(db: Session, skip: int = 0, limit: int = 10):
-  try:
-    return (
-      db.query(TrainingFeedback)
-      .order_by(TrainingFeedback.feedback_id)
-      .offset(skip)
-      .limit(limit)
-      .all()
-    )
-
-  except SQLAlchemyError:
-    logger.exception("DB error while fetching feedback list")
-    raise HTTPException(
-      status_code=500,
-      detail="Database error while fetching feedback"
-    )
-
+# 2. List feedback records.
+def get_all_feedback(db: Session):
+  return db.query(TrainingFeedback).all()
 
 # 3. Get feedback by feedback ID.
 def get_feedback_by_id(db: Session, id: int):
@@ -213,36 +198,3 @@ def get_low_rated_feedback(db: Session):
       detail="Database error while fetching low-rated feedback"
     )
 
-
-# 10. Calculate recommendation percentage for a selected course.
-def get_course_recommendation(db: Session, course_name: str):
-  try:
-    total = db.query(func.count(TrainingFeedback.feedback_id)).filter(
-      TrainingFeedback.course_name == course_name
-    ).scalar()
-
-    recommended = db.query(func.count(TrainingFeedback.feedback_id)).filter(
-      TrainingFeedback.course_name == course_name,
-      TrainingFeedback.would_recommend.is_(True)
-    ).scalar()
-
-  except SQLAlchemyError:
-    logger.exception(f"DB error while calculating recommendation for course {course_name}")
-    raise HTTPException(
-      status_code=500,
-      detail="Database error while calculating recommendation percentage"
-    )
-
-  if total == 0:
-    logger.warning(f"No feedback found for course {course_name}")
-    raise HTTPException(
-      status_code=404,
-      detail="No feedback found for this course"
-    )
-
-  return CourseRecommendationResponse(
-    course_name=course_name,
-    total_responses=total,
-    recommended_count=recommended,
-    recommendation_percentage=round((recommended / total) * 100, 2)
-  )

@@ -3,7 +3,6 @@ from decimal import Decimal
 
 # 1. AddProduct
 class AddProduct(BaseModel):
-  product_id: int | None = Field(default=None,gt=0)
   product_name: str = Field(min_length=1)
   category: str = Field(min_length=1)
   supplier_name: str = Field(min_length=1)

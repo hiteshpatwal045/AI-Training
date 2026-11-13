@@ -16,7 +16,6 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Inventory and Product Management API")
 
-
 # 1. Add a product
 @app.post("/products", response_model=InventoryProduct)
 def add_product(data : AddProduct, db : Session):
@@ -25,12 +24,8 @@ def add_product(data : AddProduct, db : Session):
 
 # 2. List all products with pagination
 @app.get("/products", response_model=ProductPage)
-def list_products(
-  page : int = Query(1, ge=1),
-  page_size : int = Query(10, ge=1, le=100),
-  db : Session = Depends(get_db)
-):
-  return service.list_products(db, page, page_size)
+def list_products(db : Session = Depends(get_db)):
+  return service.list_products(db)
 
 
 # 3. Retrieve a product by ID

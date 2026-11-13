@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from config.database import Base, engine, get_db
 from logger import logger
-from model.training_feedback_model import TrainingFeedback  # noqa: F401 (needed so create_all sees the table)
+from model.training_feedback_model import TrainingFeedback 
 from service import training_feedback_service as service
 
 from schema.training_feedback_schema import (
@@ -26,8 +26,8 @@ def add_feedback(data: CreateFeedback, db: Session = Depends(get_db)):
 
 # 2. List feedback records with pagination.
 @app.get("/feedback", response_model=list[ResponseFeedback])
-def list_feedback(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-  return service.get_all_feedback(db, skip, limit)
+def list_feedback(db: Session = Depends(get_db)):
+  return service.get_all_feedback(db)
 
 
 # 9. Identify low-rated sessions where any rating is 2 or below.
@@ -46,12 +46,6 @@ def trainer_averages(db: Session = Depends(get_db)):
 @app.get("/feedback/trainer/{trainer_name}", response_model=list[ResponseFeedback])
 def feedback_by_trainer(trainer_name: str, db: Session = Depends(get_db)):
   return service.get_feedback_by_trainer(db, trainer_name)
-
-
-# 10. Calculate recommendation percentage for a selected course.
-@app.get("/feedback/course/{course_name}/recommendation", response_model=CourseRecommendationResponse)
-def course_recommendation(course_name: str, db: Session = Depends(get_db)):
-  return service.get_course_recommendation(db, course_name)
 
 
 # 7. Filter feedback by course name.

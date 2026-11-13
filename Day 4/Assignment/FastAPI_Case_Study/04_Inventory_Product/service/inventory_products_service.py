@@ -9,7 +9,6 @@ from schema.inventory_products_schema import (
   UpdateProduct
 )
 
-
 # 1. Add a product.
 def add_product(db : Session, data : AddProduct):
   try:

@@ -1,4 +1,3 @@
-from builtins import str, int, bool, float
 from datetime import date
 from pydantic import BaseModel, ConfigDict, Field
 
