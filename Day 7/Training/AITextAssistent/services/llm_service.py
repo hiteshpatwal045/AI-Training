@@ -6,7 +6,6 @@ from models.ai_model import (
 )
 from config.settings import (
     AZURE_OPENAI_API_KEY,
-    AZURE_OPENAI_API_VERSION,
     AZURE_OPENAI_DEPLOYMENT,
     AZURE_OPENAI_ENDPOINT
 )
