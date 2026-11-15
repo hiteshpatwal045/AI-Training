@@ -1,6 +1,8 @@
 from openai import OpenAI
 from prompts.emp_prompt import SYSTEM_PROMPT, HUMAN_PROMPT
+
 from models.emp_models import EmployeeRequest, EmployeeResponse
+
 from config.settings import (
     AZURE_OPENAI_API_KEY,
     AZURE_OPENAI_DEPLOYMENT,
