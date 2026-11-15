@@ -1,0 +1,9 @@
+2026-11-15 15:53:06,374 | INFO | logger | Hit LLM
+2026-11-15 15:53:10,268 | INFO | httpx2 | HTTP Request: POST https://generic-resource-project.openai.azure.com/openai/v1/responses "HTTP/1.1 200 OK"
+2026-11-15 15:53:10,415 | INFO | logger | Successfully return the Output
+2026-11-15 15:57:28,176 | INFO | logger | Hit LLM
+2026-11-15 15:57:34,596 | INFO | httpx2 | HTTP Request: POST https://generic-resource-project.openai.azure.com/openai/v1/responses "HTTP/1.1 200 OK"
+2026-11-15 15:57:34,696 | INFO | logger | Successfully return the Output
+2026-11-15 17:58:23,493 | INFO | logger | Hit LLM
+2026-11-15 17:58:29,441 | INFO | httpx2 | HTTP Request: POST https://generic-resource-project.openai.azure.com/openai/v1/responses "HTTP/1.1 200 OK"
+2026-11-15 17:58:29,551 | INFO | logger | Successfully return the Output
