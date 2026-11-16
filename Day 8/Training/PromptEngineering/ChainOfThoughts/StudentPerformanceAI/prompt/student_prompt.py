@@ -23,7 +23,7 @@ result
 calculation_summary
 improvent_areas
 
-Provide concise verification calculation summary 
+Provide concise verification calculation summary
 Do not add private internal reasoning or Markdown formatting
 
 
@@ -37,8 +37,8 @@ Python Marks : {python_marks}
 SQL Marks : {sql_marks}
 FastAPI Marks : {fastapi_marks}
 
-Calculate the total and average marks 
-Apply the grading and passing rules 
+Calculate the total and average marks
+Apply the grading and passing rules
 Recommends improvement for weak subject
-RETURN JSON only 
+RETURN JSON only
 """

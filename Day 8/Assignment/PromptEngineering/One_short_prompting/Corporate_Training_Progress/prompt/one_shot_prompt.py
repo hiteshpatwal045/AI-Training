@@ -13,25 +13,25 @@ EXAMPLE INPUT
 Learner ID: L101
 Learner Name: Hitesh Patwal
 Training Program: Python Full Stack
-Topics Completed: ['Python Basics', 'OOPs', 'SQL']
+Topics Completed: ['OOPs', 'SQL']
 Assignments Assigned: 10
 Assignments Completed: 8
 Attendance Percentage: 90
 Coding Assessment Score: 80
-Trainer Feedback: Strong logic, needs more practice with SQL joins.
+Trainer Feedback: Strong logic, focus on sql.
 
 EXAMPLE OUTPUT
 {
   "completion_percentage": 80.0,
   "learning_level": "Proficient",
-  "strong_topics": ["Python Basics", "OOPs"],
+  "strong_topics": ["OOPs"],
   "weak_topics": ["SQL joins"],
   "readiness_score": 78,
   "improvement_priority": "Practice SQL joins with multi-table queries",
-  "recommended_practice": ["Write 10 join queries", "Build a Project with SQL"],
+  "recommended_practice": ["have join queries handy", "Build a project with sql"],
   "next_learning_plan": "Spend time on joins, then move to capstone project.",
   "trainer_recommendation": "Assign a short SQL assessment and review the results.",
-  "ai_summary": "Hitesh has strong fundamentals and good attendance. SQL joins are the main gap, and focused practice should close it quickly."
+  "ai_summary": "Hitesh has strong fundamentals and good attendance. must do hands on sql."
 }
 
 
@@ -40,7 +40,6 @@ Analyze the actual student
 
 FOllow exactly the same JSON structure demostrate in the exmaple output
 Return valid JSON only
-
 """
 
 
