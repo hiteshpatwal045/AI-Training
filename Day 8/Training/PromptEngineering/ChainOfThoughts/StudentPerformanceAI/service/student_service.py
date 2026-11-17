@@ -26,6 +26,7 @@ llm = AzureOpenAI(
     api_version=AZURE_OPENAI_API_VERSION
 )
 
+
 def analyze_student_profile(request: StudentPerformanceRequest) -> ModelResponse:
 
     user_prompt = HUMAN_PROMPT.format(
@@ -72,5 +73,5 @@ def analyze_student_profile(request: StudentPerformanceRequest) -> ModelResponse
         student_id=request.student_id,
         student_name=request.student_name,
         analysis=analysis,
-        improvement_suggestion=ai_analysis["improvement_suggestion"]
+        # improvement_suggestion=ai_analysis["improvement_suggestion"]
     )
