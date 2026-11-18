@@ -17,5 +17,5 @@ def home():
 
 
 @app.post("/api/v1/agent", response_model=SalaryResponse)
-def agent_response(request: SalaryRequest):
+def calculate_employee_salary(request: SalaryRequest):
     return calculate_employee_salary(request)

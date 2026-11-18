@@ -11,7 +11,7 @@ from prompt.ai_prompt import SALARY_SYSTEM_PROMPT
 from tool.ai_tool import (
     calculate_hra,
     calculate_da,
-    calculate_basic_salary,
+    calculate_basic_salary, 
     calculate_gross_salary
 )
 def create_salary_agent():
