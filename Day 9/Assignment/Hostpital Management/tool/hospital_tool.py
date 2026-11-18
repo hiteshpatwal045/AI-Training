@@ -43,7 +43,7 @@ def book_appointment(patient_id: str, doctor_id: str, appointment_date: str, tim
 
     if patient_id not in PATIENTS:
         raise ValueError("Record Not Found")
-
+    
     appointment_id = f"A{2001 + len(APPOINTMENTS)}"
 
     APPOINTMENTS[appointment_id] = {
