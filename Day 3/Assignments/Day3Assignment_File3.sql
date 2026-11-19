@@ -265,117 +265,265 @@ from employees e
 inner join payroll p on e.employee_id = p.employee_id
 where p.pay_month = '2026-09-01';
 
+
 -- Q066. Find total net_pay for each employee across three months using Employees and Payroll. 
-
-
+SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS emp_name, SUM(p.net_pay) AS total_net_pay
+FROM Employees e
+INNER JOIN Payroll p ON e.employee_id = p.employee_id
+GROUP BY e.employee_id, emp_name;
 
 -- Q067. Show the five employees with the highest total net_pay across all months. 
-
+SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS emp_name, SUM(p.net_pay) AS total_net_pay
+FROM Employees e
+INNER JOIN Payroll p ON e.employee_id = p.employee_id
+GROUP BY e.employee_id, emp_name
+ORDER BY total_net_pay DESC
+LIMIT 5;
 
 -- Q068. JOIN EmployeeProjects and Projects to show project names and assignment roles. 
-
+SELECT p.project_name, ep.role_on_project
+FROM EmployeeProjects ep
+INNER JOIN Projects p ON ep.project_id = p.project_id;
 
 -- Q069. JOIN Employees and EmployeeProjects to list employees and their allocation percentages. 
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS emp_name, ep.allocation_pct
+FROM Employees e
+INNER JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id;
 
 -- Q070. Count assigned employees per project using Projects and EmployeeProjects. 
-
+SELECT p.project_name, COUNT(ep.employee_id) AS assigned_employees
+FROM Projects p
+INNER JOIN EmployeeProjects ep ON p.project_id = ep.project_id
+GROUP BY p.project_name;
 
 -- Q071. Use LEFT JOIN to list every project, including projects with no assignments. 
-
+SELECT p.project_name, ep.employee_id
+FROM Projects p
+LEFT JOIN EmployeeProjects ep ON p.project_id = ep.project_id;
 
 -- Q072. Use LEFT JOIN to find employees who have no project assignments. 
-
+SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS emp_name
+FROM Employees e
+LEFT JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id
+WHERE ep.assignment_id IS NULL;
 
 -- Q073. Use a self JOIN on Employees to show each employee and their manager name. 
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS employee_name,
+       CONCAT(m.first_name, ' ', m.last_name) AS manager_name
+FROM Employees e
+INNER JOIN Employees m ON e.manager_id = m.employee_id;
 
 -- Q074. Use LEFT self JOIN to include managers who have no manager_id. 
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS employee_name,
+       CONCAT(m.first_name, ' ', m.last_name) AS manager_name
+FROM Employees e
+LEFT JOIN Employees m ON e.manager_id = m.employee_id;
 
 -- Q075. Show employees whose manager earns less than they do using a self JOIN.
-
-
-
-
-
-
-
-
-
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS employee_name, e.base_salary,
+       CONCAT(m.first_name, ' ', m.last_name) AS manager_name, m.base_salary AS manager_salary
+FROM Employees e
+INNER JOIN Employees m ON e.manager_id = m.employee_id
+WHERE m.base_salary < e.base_salary;
 
 -- Q076. Join Employees, Departments and Payroll to show employee, department, month and net pay. 
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS emp_name, d.department_name, p.pay_month, p.net_pay
+FROM Employees e
+INNER JOIN Departments d ON e.department_id = d.department_id
+INNER JOIN Payroll p ON e.employee_id = p.employee_id;
 
 -- Q077. Find total net payroll by department for October 2026 using three tables. 
-
+SELECT d.department_name, SUM(p.net_pay) AS total_net_payroll
+FROM Departments d
+INNER JOIN Employees e ON d.department_id = e.department_id
+INNER JOIN Payroll p ON e.employee_id = p.employee_id
+WHERE p.pay_month = '2026-10-01'
+GROUP BY d.department_name;
 
 -- Q078. Find departments with October 2026 total net payroll greater than 500000. 
-
+SELECT d.department_name, SUM(p.net_pay) AS total_net_payroll
+FROM Departments d
+INNER JOIN Employees e ON d.department_id = e.department_id
+INNER JOIN Payroll p ON e.employee_id = p.employee_id
+WHERE p.pay_month = '2026-10-01'
+GROUP BY d.department_name
+HAVING SUM(p.net_pay) > 500000;
 
 -- Q079. Join Employees, EmployeeProjects and Projects to list each employee with project name and role. 
-
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS emp_name, pr.project_name, ep.role_on_project
+FROM Employees e
+INNER JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id
+INNER JOIN Projects pr ON ep.project_id = pr.project_id;
 
 -- Q080. Find all Active projects and the names of employees assigned to them. 
-
+SELECT pr.project_name, CONCAT(e.first_name, ' ', e.last_name) AS emp_name
+FROM Projects pr
+INNER JOIN EmployeeProjects ep ON pr.project_id = ep.project_id
+INNER JOIN Employees e ON ep.employee_id = e.employee_id
+WHERE pr.project_status = 'Active';
 
 -- Q081. Show the number of distinct projects per employee using a three-table join. 
-
+SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS emp_name,
+       COUNT(DISTINCT pr.project_id) AS project_count
+FROM Employees e
+INNER JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id
+INNER JOIN Projects pr ON ep.project_id = pr.project_id
+GROUP BY e.employee_id, emp_name;
 
 -- Q082. Find employees assigned to two or more projects using GROUP BY and HAVING. 
-
+SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS emp_name, COUNT(*) AS project_count
+FROM Employees e
+INNER JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id
+GROUP BY e.employee_id, emp_name
+HAVING COUNT(*) >= 2;
 
 -- Q083. Show department names and number of distinct projects worked on by their employees. 
-
+SELECT d.department_name, COUNT(DISTINCT ep.project_id) AS distinct_projects
+FROM Departments d
+INNER JOIN Employees e ON d.department_id = e.department_id
+INNER JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id
+GROUP BY d.department_name;
 
 -- Q084. Find the highest-paid employee in each department using a correlated subquery. 
-
+SELECT * FROM Employees e
+WHERE base_salary = (
+    SELECT MAX(base_salary) FROM Employees
+    WHERE department_id = e.department_id
+);
 
 -- Q085. Find employees whose base_salary is above the overall average salary. 
-
+SELECT * FROM Employees
+WHERE base_salary > (SELECT AVG(base_salary) FROM Employees);
 
 -- Q086. Find employees earning more than their own department average using a correlated subquery. 
-
+SELECT * FROM Employees e
+WHERE base_salary > (
+    SELECT AVG(base_salary) FROM Employees
+    WHERE department_id = e.department_id
+);
 
 -- Q087. Find projects with budgets above the average project budget. 
-
+SELECT * FROM Projects
+WHERE budget > (SELECT AVG(budget) FROM Projects);
 
 -- Q088. Find employees who have never received a bonus using NOT EXISTS. 
-
+SELECT * FROM Employees e
+WHERE NOT EXISTS (
+    SELECT 1 FROM Payroll p
+    WHERE p.employee_id = e.employee_id AND p.bonus > 0
+);
 
 -- Q089. Find employees who have at least one Pending payroll record using EXISTS. 
-
+SELECT * FROM Employees e
+WHERE EXISTS (
+    SELECT 1 FROM Payroll p
+    WHERE p.employee_id = e.employee_id AND p.payment_status = 'Pending'
+);
 
 -- Q090. Find employees assigned to projects whose budget exceeds 8000000 using IN or EXISTS. 
-
+SELECT * FROM Employees e
+WHERE EXISTS (
+    SELECT 1 FROM EmployeeProjects ep
+    INNER JOIN Projects pr ON ep.project_id = pr.project_id
+    WHERE ep.employee_id = e.employee_id AND pr.budget > 8000000
+);
 
 -- Q091. Use CASE to classify salaries as High (>= 100000), Medium (>= 70000) or Low. 
-
+SELECT employee_id, first_name, base_salary,
+  CASE
+    WHEN base_salary >= 100000 THEN 'High'
+    WHEN base_salary >= 70000 THEN 'Medium'
+    ELSE 'Low'
+  END AS salary_category
+FROM Employees;
 
 -- Q092. Use CASE to categorize project budgets as Large (>= 8000000) or Standard. 
-
+SELECT project_name, budget,
+  CASE
+    WHEN budget >= 8000000 THEN 'Large'
+    ELSE 'Standard'
+  END AS budget_category
+FROM Projects;
 
 -- Q093. Use a CTE to calculate total net_pay per employee and return the top ten. 
-
+SELECT emp_total.employee_id, emp_total.total_net_pay
+FROM (
+    SELECT employee_id, SUM(net_pay) AS total_net_pay
+    FROM Payroll
+    GROUP BY employee_id
+) AS emp_total
+ORDER BY emp_total.total_net_pay DESC
+LIMIT 10;
 
 -- Q094. Use a CTE to calculate departmental average salary and return above-average departments. 
+SELECT dept_avg.department_id, dept_avg.avg_salary
+FROM (
+    SELECT department_id, AVG(base_salary) AS avg_salary
+    FROM Employees
+    GROUP BY department_id
+) AS dept_avg
+WHERE dept_avg.avg_salary > (SELECT AVG(base_salary) FROM Employees);
+
 
 
 -- Q095. Build a final dashboard query showing each department, employee count, average base salary, and October 2026 total net payroll; include departments with no employees. 
-
+SELECT d.department_name,
+       COUNT(DISTINCT e.employee_id) AS employee_count,
+       AVG(e.base_salary) AS avg_base_salary,
+       COALESCE(SUM(p.net_pay), 0) AS oct_total_net_payroll
+FROM Departments d
+LEFT JOIN Employees e ON d.department_id = e.department_id
+LEFT JOIN Payroll p ON e.employee_id = p.employee_id AND p.pay_month = '2026-10-01'
+GROUP BY d.department_name;
 
 -- Q096. Find the project with the greatest number of assigned employees. 
-
+SELECT pr.project_name, COUNT(ep.employee_id) AS assigned_employees
+FROM Projects pr
+INNER JOIN EmployeeProjects ep ON pr.project_id = ep.project_id
+GROUP BY pr.project_name
+ORDER BY assigned_employees DESC
+LIMIT 1;
 
 -- Q097. Find employees whose total project allocation exceeds 100 percent. 
-
+SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS emp_name,
+       SUM(ep.allocation_pct) AS total_allocation
+FROM Employees e
+INNER JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id
+GROUP BY e.employee_id, emp_name
+HAVING SUM(ep.allocation_pct) > 100;
 
 -- Q098. Compare each employee October net pay against the department October average using a CTE. 
+SELECT o.employee_id, o.net_pay, d.dept_avg_net, o.net_pay - d.dept_avg_net AS difference
+FROM (
+    SELECT e.employee_id, e.department_id, p.net_pay
+    FROM Employees e
+    INNER JOIN Payroll p ON e.employee_id = p.employee_id
+    WHERE p.pay_month = '2026-10-01'
+) AS o
+INNER JOIN (
+    SELECT e.department_id, AVG(p.net_pay) AS dept_avg_net
+    FROM Employees e
+    INNER JOIN Payroll p ON e.employee_id = p.employee_id
+    WHERE p.pay_month = '2026-10-01'
+    GROUP BY e.department_id
+) AS d ON o.department_id = d.department_id;
+
 
 
 -- Q099. Find departments with no employees assigned to any Active project using NOT EXISTS. 
-
+SELECT d.department_name
+FROM Departments d
+WHERE NOT EXISTS (
+    SELECT 1 FROM Employees e
+    INNER JOIN EmployeeProjects ep ON e.employee_id = ep.employee_id
+    INNER JOIN Projects pr ON ep.project_id = pr.project_id
+    WHERE e.department_id = d.department_id AND pr.project_status = 'Active'
+);
 
 -- Q100. Rank employees by base salary within each department using DENSE_RANK(). 
-
+SELECT e.employee_id, e.first_name, e.department_id, e.base_salary,
+       (SELECT COUNT(DISTINCT e2.base_salary)
+        FROM Employees e2
+        WHERE e2.department_id = e.department_id
+          AND e2.base_salary > e.base_salary) + 1 AS salary_rank
+FROM Employees e;
