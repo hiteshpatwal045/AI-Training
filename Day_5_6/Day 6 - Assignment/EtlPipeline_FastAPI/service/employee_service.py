@@ -3,7 +3,7 @@ import logging
 from fastapi import HTTPException
 
 import pandas as pd
-# from etl_pipeline import run_etl_pipeline
+from etl_pipeline import run_etl_pipeline
 from model.employee_model import Employee, Payroll
 from schema.employee_schema import ETLRunResponse
 
@@ -114,9 +114,14 @@ def get_top_earners(db):
 # ETL
 
 def run_etl(db):
-  logger.info("ETL Not connected")
-  # try:
-  #   details = run_etl_pipeline()
-  # except Exception as error:
-  #   logger.exception("ETL failed")
-  #   raise HTTPException(status_code=500, detail=f"ETL failed: {error}")
+  try:
+    details = run_etl_pipeline(session=db)
+  except Exception as error:
+    logger.exception("ETL failed")
+    raise HTTPException(status_code=500, detail=f"ETL failed: {error}")
+  return ETLRunResponse(
+    message="ETL completed",
+    employees_in_db=details["employees_in_db"],
+    payroll_rows_in_db=details["payroll_rows_in_db"],
+    details=details,
+  )
