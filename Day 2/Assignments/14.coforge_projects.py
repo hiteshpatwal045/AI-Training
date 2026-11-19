@@ -1,14 +1,14 @@
-# Business Problem Statement 
+# Business Problem Statement
 
-# The fictional Coforge HR and Business Analytics team needs an employee analytics solution to understand salary distribution, performance, workforce composition, training, attendance, and project allocation. Build a reproducible analysis using the supplied employee and project CSV files. Perform all 50 operations and interpret the findings as business insights. 
+# The fictional Coforge HR and Business Analytics team needs an employee analytics solution to understand salary distribution, performance, workforce composition, training, attendance, and project allocation. Build a reproducible analysis using the supplied employee and project CSV files. Perform all 50 operations and interpret the findings as business insights.
 
-import pandas as pd 
-import numpy as np 
- 
-employees = pd.read_excel("coforge_employees_50.xlsx") 
-projects = pd.read_csv("coforge_projects.csv") 
+import pandas as pd
+import numpy as np
 
-print(employees.head()) 
+employees = pd.read_excel("coforge_employees_50.xlsx")
+projects = pd.read_csv("coforge_projects.csv")
+
+print(employees.head())
 print(projects.head())
 merged = employees.merge(projects, on="ProjectID", how="left")
 
@@ -166,14 +166,19 @@ print(employees.groupby("Department")["Salary"]
 
 print("===============================32===============================")
 # 32. Create a pivot table of average salary by Department and Location.
+print(employees.pivot_table(values="Salary", index="Department", columns="Location", aggfunc="mean"))
 
 
 print("===============================33===============================")
 # 33. Create a crosstab of Department and WorkMode.
+print(pd.crosstab(employees["Department"], employees["WorkMode"]))
+
 
 print("===============================34===============================")
 # 34. Convert JoiningDate to datetime and calculate tenure as of the analysis date.
-
+employees["JoiningDate"] = pd.to_datetime(employees["JoiningDate"])
+employees["Tenure"] = (pd.Timestamp("2026-11-19") - employees["JoiningDate"]).dt.days / 365
+print(employees[["JoiningDate", "Tenure"]])
 
 print("===============================35===============================")
 # 35. Inspect nulls and duplicates; report findings and clean only where justified.
@@ -229,11 +234,16 @@ print("===============================42===============================")
 salary_percentiles = employees["Salary"].quantile([0.25, 0.50, 0.75, 0.90])
 print(salary_percentiles)
 
-print("===============================43===============================")
 # 43. Detect Salary outliers using the interquartile range (IQR) method.
+print("===============================43===============================")
+q1 = employees["Salary"].quantile(0.25)
+q3 = employees["Salary"].quantile(0.75)
+iqr = q3 - q1
+print(employees[(employees["Salary"] < q1 - 1.5 * iqr) | (employees["Salary"] > q3 + 1.5 * iqr)])
 
-print("===============================44===============================")
+
 # 44. Create a weighted performance score from PerformanceRating, TrainingHours and ProjectsCompleted.
+print("===============================44===============================")
 employees["PerformanceScore"] = (employees["PerformanceRating"] * 0.5+ employees["TrainingHours"] * 0.2+ employees["ProjectsCompleted"] * 0.3)
 print(employees[["EmployeeName", "PerformanceScore"]])
 
@@ -242,20 +252,36 @@ print("===============================45===============================")
 multi_df = employees.set_index(["Department", "Location"])
 print(multi_df)
 
-print("===============================46===============================")
 # 46. Analyze employee joining counts by year and quarter.
+print("===============================46===============================")
+print(employees.groupby([employees["JoiningDate"].dt.year, employees["JoiningDate"].dt.quarter]).size())
 
-print("===============================47===============================")
+
 # 47. Calculate cumulative Salary by department after sorting by Salary.
+print("===============================47===============================")
 print(employees.sort_values(["Department","Salary"]).groupby("Department")["Salary"].cumsum())
 
-print("===============================48===============================")
 # 48. Use apply() to flag promotion eligibility with transparent business rules.
+print("===============================48===============================")
+employees["Promotion"] = employees.apply(
+    lambda row: "Eligible" if row["PerformanceRating"] >= 4 and row["ExperienceYears"] >= 3 else "Not Eligible",
+    axis=1
+)
+print(employees[["EmployeeName", "Promotion"]])
 
-
-print("===============================49===============================")
 # 49. Build a department scorecard with named aggregation and sorting.
+print("===============================49===============================")
+scorecard = employees.groupby("Department").agg(
+    Headcount=("EmployeeID", "count"),
+    Avg_Salary=("Salary", "mean"),
+    Avg_Rating=("PerformanceRating", "mean")
+).sort_values("Avg_Rating", ascending=False)
+print(scorecard)
 
-
-print("===============================50===============================")
 # 50. Export cleaned employees, project-enriched data, department scorecard and top performers to CSV.
+print("===============================50===============================")
+top_performers = employees[employees["PerformanceRating"] >= 4]
+employees.to_csv("cleaned_employees.csv", index=False)
+merged.to_csv("project_enriched.csv", index=False)
+scorecard.to_csv("department_scorecard.csv")
+top_performers.to_csv("top_performers.csv", index=False)
