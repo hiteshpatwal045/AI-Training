@@ -10,7 +10,7 @@ class IncidentState(TypedDict, total=False):
     # input
     employee_id: str
     employee_name: str
-    department: str
+    department: str 
     issue: str
     # filled by analyze_node
     category: str
