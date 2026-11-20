@@ -1,0 +1,15 @@
+V01_monthly_revenue: Revenue peaked in December and was lowest in February.
+V02_monthly_profit: Profit was highest in December.
+V03_revenue_by_product: Dairy Milk Roast Almond leads with 22.3% of revenue.
+V04_revenue_by_region: North contributes 32.8% of revenue.
+V05_top10_cities: Chennai is the top city; top 10 give 66.8% of revenue.
+V06_channel_donut: Kirana is the largest channel at 37.2%.
+V07_daily_rolling: The moving average smooths daily noise and shows the underlying trend.
+V08_product_region_heatmap: Strongest combo: Dairy Milk Roast Almond in North.
+V09_discount_hist: Most common discount is 10.0%, mean 9.1%.
+V10_quantity_hist: Median order size is 9 units.
+V11_revenue_vs_profit: Correlation 0.94; 72 loss-making orders.
+V12_discount_vs_quantity: Correlation is 0.00.
+V13_margin_boxplot: Highest median margin: Dairy Milk Mini (29.9%); lowest: Dairy Milk Oreo (24.4%).
+V14_quarterly_region: Q4 is the strongest quarter.
+V15_rating_by_channel: Best avg rating: Convenience Store (3.14); lowest: E-commerce (2.94).

@@ -4,6 +4,7 @@ from src.load_data import load_all_data
 from src.clean_data import clean_sales_data
 from src.panda_analysis import run_pandas_analysis
 from src.numpy_analysis import run_numpy_analysis
+from src.visualization import run_visualization
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -27,6 +28,9 @@ def main():
 
   run_numpy_analysis(merged)
   print("Step 4 finished.")
+
+  run_visualization(merged, REPORT_DIR)
+  print("Step 5 finished.")
 
 
 if __name__ == "__main__":
