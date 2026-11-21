@@ -9,6 +9,10 @@ class EmpRequest(BaseModel):
     emp_weak_sub: str
 
 
-class EmpResponse(BaseModel):
+class EmpAnalysis(BaseModel):
     emp_feedback: str
     summary: list[str]
+
+class EmpResponse(BaseModel):
+    emp_feedback: str
+    summary: EmpAnalysis

@@ -22,8 +22,7 @@ structure_llm = llm.with_structured_output(
     EmpResponse
 )
 
-prompt = ChatPromptTemplate.from_messages(
-    [
+prompt = ChatPromptTemplate.from_messages([
         ("system", SYSTEM_PROMPT),
         ("user", HUMAN_PROMPT)
     ])
@@ -38,4 +37,7 @@ def analyze_output(request: EmpRequest) -> EmpResponse:
         "emp_rating": request.emp_rating,
         "emp_weak_sub": request.emp_weak_sub
     })
-    return result
+    return EmpResponse(
+        "emp_id":request.emp_id,
+        "emp"
+    )
