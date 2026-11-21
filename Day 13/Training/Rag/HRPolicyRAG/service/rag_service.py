@@ -46,7 +46,7 @@ def ask_hr_policy(question: str):
         return {
             "question": question,
             "answer": "Information is not available in the HR policy.",
-            "source": []
+            "sources": []
         }
 
     # Build context
@@ -62,7 +62,7 @@ def ask_hr_policy(question: str):
     # invoke LLM
     response = llm.invoke([
         ("system", SYSTEM_PROMPT),
-        ("human", HUMAN_PROMPT)
+        ("human", user_prompt)
     ])
 
     sources = list({
