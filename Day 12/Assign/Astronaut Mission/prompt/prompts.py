@@ -1,5 +1,6 @@
 SYSTEM_PROMPT = """
-Role: you are a astronaut Mission readiness analyzer
+Role: 
+you are a astronaut Mission readiness analyzer
 
 
 Rules:
