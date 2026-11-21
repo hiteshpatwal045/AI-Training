@@ -14,7 +14,7 @@ class LeaveRequest(BaseModel):
 class LeaveResponse(BaseModel):
     employee_name: str
     leave_summary: str
-    missing_information: list[str]
+    # missing_information: list[str]
     policy_questions: list[str]
     suggested_next_steps: list[str]
     manager_review_required: bool
