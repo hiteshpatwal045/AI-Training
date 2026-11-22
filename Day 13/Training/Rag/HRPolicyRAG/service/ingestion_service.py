@@ -1,23 +1,18 @@
 from pathlib import Path
 from langchain_community.document_loaders import TextLoader
-from langchain_text_splitters import (
-    RecursiveCharacterTextSplitter
-)
+from langchain_text_splitters import (RecursiveCharacterTextSplitter)
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DOCUMENT_PATH = BASE_DIR / "data" / "hr_policty.txt"
-VECTOR_PATH = BASE_DIR / "vector_store"
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+DOCUMENT_PATH = BASE_DIR / "data" / "hr_policy.txt"
+VECTOR_PATH = BASE_DIR / "vector_store"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 
 def get_embeddings():
-
-    return HuggingFaceEmbeddings (
-        model_name=EMBEDDING_MODEL
-    )
+    return HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 
 
 def create_vector_store():
