@@ -1,17 +1,15 @@
-from pydantic import BaseModel
 from typing import Literal
+from pydantic import BaseModel, Field
 
 
-# Model 1: Incoming Leave Request
 class LeaveRequest(BaseModel):
-  employee_id: int
-  employee_name: str
+  employee_id: int = Field(gt=0)
+  employee_name: str = Field(min_length=2)
   leave_type: Literal["Sick", "Casual", "Earned", "Other"]
-  days_requested: int
-  question: str
+  days_requested: int = Field(gt=0)
+  question: str = Field(min_length=10)
 
 
-# Model 2: AI Leave Analysis
 class LeaveAnalysis(BaseModel):
   category: Literal["Eligibility", "Procedure", "Documents", "Other"]
   urgency: Literal["Low", "Medium", "High"]
@@ -19,7 +17,6 @@ class LeaveAnalysis(BaseModel):
   summary: str
 
 
-# Model 3: Final Leave Response
 class LeaveResponse(BaseModel):
   employee_id: int
   employee_name: str
@@ -27,4 +24,4 @@ class LeaveResponse(BaseModel):
   guidance: str
   next_step: str
   disclaimer: str
-  status: str = "success"
+  status: str
