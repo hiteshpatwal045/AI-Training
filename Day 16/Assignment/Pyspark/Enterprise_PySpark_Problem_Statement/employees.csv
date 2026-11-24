@@ -1,0 +1,6 @@
+employee_id,employee_name,gender,department,city,salary,experience,performance_rating
+101,Anjali,Female,IT,Noida,75000,5,4.5
+102,Rahul,Male,HR,Delhi,55000,3,3.8
+103,Priya,Female,Finance,Mumbai,90000,7,4.9
+104,Amit,Male,IT,Pune,65000,4,4.2
+105,Neha,Female,Sales,Delhi,58000,2,3.9
