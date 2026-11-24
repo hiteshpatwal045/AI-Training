@@ -1,0 +1,7 @@
+employee_id,employee_name,department,city,salary,experience
+101,Anjali,IT,Noida,55000.0,2
+102,Rahul,HR,Delhi,45000.0,3
+103,Priya,IT,Gurgaon,65000.0,5
+104,Mohit,Finance,Noida,70000.0,7
+105,Neha,IT,Delhi,50000.0,1
+106,Aman,HR,Noida,48000.0,2
