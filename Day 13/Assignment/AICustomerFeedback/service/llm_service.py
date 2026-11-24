@@ -22,16 +22,13 @@ llm = AzureChatOpenAI(
 structured_llm = llm.with_structured_output(FeedbackAnalysis)
 
 # creating the prompt
-prompt = ChatPromptTemplate.from_messages(
-    [
-        ("system", SYSTEM_PROMPT),
-        ("user", HUMAN_PROMPT),
-    ]
-)
+prompt = ChatPromptTemplate.from_messages([
+    ("system", SYSTEM_PROMPT),
+    ("user", HUMAN_PROMPT),
+])
 
 # chain
 chain = prompt | structured_llm
-
 
 def analyze_feedback(request: FeedbackRequest) -> FeedbackAnalysis:
     return chain.invoke({
