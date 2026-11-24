@@ -1,0 +1,51 @@
+employee_id,employee_name,gender,age,department,designation,city,salary,experience,joining_date,performance_rating,employment_status
+101,Anjali,Female,29,IT,Software Engineer,Noida,75000.0,5,2021-06-15,4.5,Active
+102,Rahul,Male,27,HR,HR Executive,Delhi,55000.0,3,2023-04-10,3.8,Active
+103,Priya,Female,33,Finance,Finance Manager,Mumbai,90000.0,7,2019-03-20,4.9,Active
+104,Amit,Male,28,IT,Software Developer,Pune,65000.0,4,2022-07-12,4.2,Active
+105,Neha,Female,26,Sales,Sales Executive,Delhi,58000.0,2,2024-01-08,3.9,Active
+106,Vikas,Male,35,IT,Technical Lead,Bangalore,120000.0,10,2016-05-15,4.8,Active
+107,Mehak,Female,25,HR,HR Associate,Noida,45000.0,2,2024-02-12,3.5,Active
+108,Rohit,Male,32,Finance,Financial Analyst,Mumbai,85000.0,7,2019-08-20,4.4,Active
+109,Sneha,Female,30,Marketing,Marketing Manager,Pune,88000.0,6,2020-09-10,4.6,Active
+110,Karan,Male,29,Sales,Sales Manager,Delhi,82000.0,5,2021-03-18,4.3,Active
+111,Pooja,Female,28,IT,Data Engineer,Hyderabad,78000.0,4,2022-06-15,4.5,Active
+112,Arjun,Male,31,Operations,Operations Manager,Chennai,92000.0,7,2019-01-20,4.1,Active
+113,Ritika,Female,24,IT,Python Developer,Noida,52000.0,1,2025-04-12,3.7,Active
+114,Manish,Male,40,Finance,Finance Director,Mumbai,180000.0,15,2011-07-10,4.9,Active
+115,Divya,Female,27,Marketing,Marketing Executive,Delhi,57000.0,3,2023-02-18,3.8,Active
+116,Sachin,Male,36,IT,Project Manager,Pune,145000.0,12,2014-08-15,4.7,Active
+117,Harshita,Female,26,IT,Data Analyst,Bangalore,68000.0,3,2023-05-22,4.2,Active
+118,Gaurav,Male,30,Sales,Sales Executive,Noida,62000.0,5,2021-09-10,3.9,Resigned
+119,Simran,Female,29,HR,HR Manager,Delhi,85000.0,6,2020-04-15,4.6,Active
+120,Deepak,Male,34,Operations,Operations Lead,Chennai,95000.0,9,2017-06-18,4.3,Active
+121,Ayushi,Female,25,IT,Software Developer,Pune,60000.0,2,2024-07-12,4.1,Active
+122,Varun,Male,28,Finance,Accountant,Mumbai,62000.0,4,2022-03-10,3.6,Active
+123,Nisha,Female,31,Marketing,Digital Marketing Lead,Bangalore,95000.0,7,2019-02-20,4.5,Active
+124,Sandeep,Male,38,IT,Solution Architect,Hyderabad,165000.0,13,2013-05-15,4.9,Active
+125,Shreya,Female,27,Sales,Sales Analyst,Delhi,65000.0,3,2023-08-12,4.0,Active
+126,Mohit,Male,29,Operations,Operations Executive,Noida,58000.0,5,2021-01-15,3.4,Inactive
+127,Kavita,Female,35,HR,Senior HR Manager,Mumbai,115000.0,10,2016-07-20,4.7,Active
+128,Abhishek,Male,32,IT,Cloud Engineer,Pune,105000.0,7,2019-06-12,4.6,Active
+129,Ananya,Female,24,Finance,Finance Associate,Delhi,48000.0,1,2025-03-15,3.5,Active
+130,Vivek,Male,33,Sales,Regional Sales Manager,Bangalore,125000.0,9,2017-09-18,4.8,Active
+131,Bhoomika,Female,26,IT,AI Engineer,Hyderabad,85000.0,3,2023-04-10,4.7,Active
+132,Nitin,Male,30,Marketing,Marketing Analyst,Chennai,72000.0,5,2021-06-15,4.0,Active
+133,Ishita,Female,25,HR,Recruiter,Noida,50000.0,2,2024-08-12,3.9,Active
+134,Rajesh,Male,42,Operations,Operations Director,Mumbai,190000.0,18,2008-02-20,4.9,Active
+135,Swati,Female,29,Finance,Senior Accountant,Pune,78000.0,6,2020-03-10,4.2,Active
+136,Akash,Male,27,IT,DevOps Engineer,Bangalore,82000.0,3,2023-01-18,4.4,Active
+137,Muskan,Female,24,Sales,Sales Associate,Delhi,42000.0,1,2025-06-15,3.2,Inactive
+138,Prateek,Male,31,IT,Database Administrator,Hyderabad,98000.0,7,2019-07-12,4.3,Active
+139,Shalini,Female,34,Marketing,Brand Manager,Mumbai,110000.0,9,2017-05-20,4.6,Active
+140,Ashish,Male,37,IT,Engineering Manager,Pune,155000.0,12,2014-04-15,4.8,Active
+141,Nidhi,Female,28,Operations,Business Analyst,Noida,72000.0,4,2022-02-10,4.1,Active
+142,Harshal,Male,25,IT,Junior Developer,Pune,48000.0,2,2024-06-18,3.6,Active
+143,Samriddhi,Female,27,Finance,Financial Analyst,Bangalore,75000.0,3,2023-07-15,4.4,Active
+144,Shaurya,Male,26,Sales,Sales Executive,Chennai,54000.0,2,2024-03-12,3.7,Resigned
+145,Anshi,Female,25,IT,Data Scientist,Hyderabad,95000.0,2,2024-09-20,4.8,Active
+146,Saurav,Male,39,HR,HR Director,Delhi,160000.0,14,2012-06-15,4.9,Active
+147,Riya,Female,28,Marketing,Content Strategist,Noida,64000.0,4,2022-05-10,3.8,Active
+148,Aditya,Male,30,Operations,Supply Chain Analyst,Mumbai,78000.0,6,2020-08-18,4.2,Active
+149,Tanvi,Female,32,Finance,Finance Manager,Pune,105000.0,8,2018-04-12,4.7,Active
+150,Siddharth,Male,35,IT,Senior Data Engineer,Bangalore,135000.0,10,2016-03-20,4.9,Active
