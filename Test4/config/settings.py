@@ -1,0 +1,26 @@
+import os
+from dotenv import load_dotenv
+from crewai import LLM
+load_dotenv()
+
+
+AZURE_DEPLOYMENT = os.getenv("OPENAI_MODEL_NAME")
+AZURE_API_KEY = os.getenv("OPENAI_API_KEY")
+AZURE_ENDPOINT = os.getenv("OPENAI_ENDPOINT")
+AZURE_VERSION = os.getenv("OPENAI_API_VERSION")
+
+# os.environ["OPENAI_ENDPOINT"] = AZURE_ENDPOINT
+# os.environ["OPENAI_API_KEY"] = AZURE_API_KEY
+# os.environ["OPENAI_API_VERSION"] = AZURE_VERSION
+
+os.environ["OPENAI_ENDPOINT"] = AZURE_ENDPOINT
+os.environ["OPENAI_API_KEY"] = AZURE_API_KEY
+os.environ["OPENAI_API_VERSION"] = AZURE_VERSION
+
+
+llm = LLM(
+    model=f"azure/{AZURE_DEPLOYMENT}",
+    endpoint=AZURE_ENDPOINT,
+    api_key=AZURE_API_KEY,
+    api_version=AZURE_VERSION
+)
