@@ -27,34 +27,33 @@ def extract_data(filename: str) -> pd.DataFrame:
 
 
 # 3. Clean Data
-def clean_data(df: pd.DataFrame, id_col: str) -> pd.DataFrame:
-    df = df.copy()
-    df = df.drop_duplicates()
-    df = df.dropna(subset=[id_col])
-    df[id_col] = df[id_col].astype(int)
+def clean_data(emp: pd.DataFrame, id_col: str) -> pd.DataFrame:
+    emp = emp.copy()
+    emp = emp.drop_duplicates()  # Remove duplicate rows
+    emp = emp.dropna(subset=[id_col])  # Remove missing IDs
+    emp[id_col] = emp[id_col].astype(int)
 
-    for col in df.select_dtypes(include=["object", "string"]):
-        df[col] = df[col].fillna("Unknown").astype(str).str.strip()
+    # String/text
+    for col in emp.select_dtypes(include=["object", "string"]):
+        emp[col] = (
+            emp[col]
+            .fillna("Unknown")
+            .astype(str)
+            .str.strip()
+            .str.title()
+        )
 
-        if col == "email":
-            df[col] = df[col].str.lower()
-        elif col == "department_name":
-            # Keeps "IT" and "HR" uppercase while title-casing others
-            df[col] = df[col].apply(
-                lambda x: x.upper() if len(x) <= 2 else x.title())
-        else:
-            df[col] = df[col].str.title()
+    # Numeric columns
+    for col in emp.select_dtypes(include=["int64", "float64"]):
+        emp[col] = emp[col].fillna(0)
 
-    for col in df.select_dtypes(include=["int64", "float64"]):
-        df[col] = df[col].fillna(0)
-
-    return df
+    return emp
 
 
 # 4. Transform Employees Data
 def transform_employees(employees: pd.DataFrame) -> pd.DataFrame:
     employees = employees.copy()
-    employees["annual_salary"] = employees["salary"] * 12
+    employees["annual_salary"] = employees["salary"] * 12 * 0.1
     employees["bonus"] = employees["salary"] * 0.10
     return employees
 

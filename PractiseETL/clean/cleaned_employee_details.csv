@@ -1,6 +1,6 @@
 employee_id,employee_name,department_id,salary,email,annual_salary,bonus,department_name,location
-101,Anjali,1,5500.0,Anjali@Gmail.Com,66000.0,5500.0,It,Pune
-102,Rahul,2,4500.0,Rahul@Gmail.Com,54000.0,4500.0,Hr,Noida
-103,Priya,1,6500.0,Priya@Gmail.Com,78000.0,6500.0,It,Pune
-104,Mohit,3,7000.0,Mohit@Gmail.Com,84000.0,7000.0,Finance,Gurgaon
-105,Neha,4,6000.0,Neha@Gmail.Com,72000.0,6000.0,Sales,Bangalore
+101,Anjali,1,55000,Anjali@Gmail.Com,66000.0,5500.0,It,Pune
+102,Rahul,2,45000,Rahul@Gmail.Com,54000.0,4500.0,Hr,Noida
+103,Priya,1,65000,Priya@Gmail.Com,78000.0,6500.0,It,Pune
+104,Mohit,3,70000,Mohit@Gmail.Com,84000.0,7000.0,Finance,Gurgaon
+105,Neha,4,60000,Neha@Gmail.Com,72000.0,6000.0,Sales,Bangalore
